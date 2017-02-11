@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blog</title>
+    <title>Article Creation Page</title>
     <link rel="stylesheet" href="vendor/styles/normalize.css">
     <link rel="stylesheet" href="styles/icons.css">
     <link rel="stylesheet" href="styles/base.css">
@@ -11,6 +11,19 @@
     <link rel="stylesheet" href="styles/modules.css">
 
     <!-- REVIEW: This stylesheet is what highlight.js will use to do syntax highlighting -->
+    <script id="article-template" type="text/x-handlebars-template">
+      <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
+        <header>
+          <h1>{{title}}</h1>
+          <div class="byline">
+            By <address><a href="{{authorUrl}}">{{author}}</a></address>
+            {{publishStatus}}
+          </div>
+        </header>
+        <section class="article-body">{{{body}}}</section>
+        <a href="#" class="read-on">Read on &rarr;</a>
+      </article>
+    </script>
     <link rel="stylesheet" href="vendor/styles/railscasts.css">
     </head>
   <body>
@@ -33,7 +46,7 @@
       <section id="write" class="tab-content">
         <h1>New Article</h1>
         <!-- REVIEW: Set up a form to accept user input for a new blog article: -->
-        <form action="#" id="new-form">
+        <form id="new-form">
           <label>
             <input type="text" id="article-title" placeholder="Article title" required>
           </label>
